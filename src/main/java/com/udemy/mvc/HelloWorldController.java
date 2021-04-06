@@ -3,6 +3,7 @@ package com.udemy.mvc;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,10 +21,17 @@ public class HelloWorldController {
         return "helloworld";
     }
 
+    // Not used anymore
     @RequestMapping("/processFormVersionTwo")
-    public String letsShoutDude(HttpServletRequest requst, Model model) {
+    public String processFormVersionTwo(HttpServletRequest requst, Model model) {
         String name = requst.getParameter("studentName");
         model.addAttribute("message", "YO! " + name.toUpperCase());
+        return "helloworld";
+    }
+
+    @RequestMapping("/processFormVersionThree")
+    public String processFormVersionThree(@RequestParam("studentName") String name, Model model) {
+        model.addAttribute("message", "Hey My Friend " + name.toUpperCase());
         return "helloworld";
     }
 
