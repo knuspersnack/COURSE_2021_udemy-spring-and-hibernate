@@ -21,6 +21,10 @@
 
 4. Adding MySQL Connector Java to POM
 
+5. Add Hibernate Config File (since Hibernate uses JDBC drivers to connect to the database)
+
+
+
 
    
    
