@@ -18,6 +18,10 @@
      - useSSL=false
 
 3. Adding Hibernate Dependency to POM
+
+4. Adding MySQL Connector Java to POM
+
+
    
    
 
