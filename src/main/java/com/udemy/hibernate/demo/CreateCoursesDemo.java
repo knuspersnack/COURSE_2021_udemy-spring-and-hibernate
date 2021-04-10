@@ -1,5 +1,6 @@
 package com.udemy.hibernate.demo;
 
+import com.udemy.hibernate.entity.Course;
 import com.udemy.hibernate.entity.Instructor;
 import com.udemy.hibernate.entity.InstructorDetail;
 import org.hibernate.Session;
@@ -7,32 +8,39 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
-public class CreateDemo {
+public class CreateCoursesDemo {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Instructor.class)
                 .addAnnotatedClass(InstructorDetail.class)
+                .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
 
         try {
-            Instructor tempInstructor = new Instructor("Chad", "Darby", "darvy@luv2code.com");
-            InstructorDetail tempInstructorDetail = new InstructorDetail("Youtube Luv2Code", "Luv2Code!");
-
-            tempInstructor.setInstructorDetail(tempInstructorDetail);
 
             session.beginTransaction();
 
-            //Since CascadeType.All the associated object will be saved as well
-            session.save(tempInstructor);
+            int theId = 1;
+            Instructor tempInstructor = session.get(Instructor.class, theId);
+
+            Course tempCourse1 = new Course("Air Guitar");
+            Course tempCourse2 = new Course("The Pinball Masterclass");
+
+            tempInstructor.add(tempCourse1);
+            tempInstructor.add(tempCourse2);
+
+            session.save(tempCourse1);
+            session.save(tempCourse2);
 
             session.getTransaction().commit();
 
             System.out.println("Done!");
 
         } finally {
+            session.close();
             factory.close();
         }
     }

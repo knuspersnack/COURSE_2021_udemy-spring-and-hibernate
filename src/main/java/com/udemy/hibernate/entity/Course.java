@@ -15,7 +15,7 @@ public class Course {
     private String title;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name="instructor_id")  //It points to the id of the instructor
+    @JoinColumn(name="instructor_id")  //This is how the join column in the table Course is called
     private Instructor instructor;
 
     public Course() {

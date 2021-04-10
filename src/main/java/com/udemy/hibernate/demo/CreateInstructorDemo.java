@@ -1,5 +1,6 @@
 package com.udemy.hibernate.demo;
 
+import com.udemy.hibernate.entity.Course;
 import com.udemy.hibernate.entity.Instructor;
 import com.udemy.hibernate.entity.InstructorDetail;
 import org.hibernate.Session;
@@ -7,36 +8,32 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
-public class DeleteInstructoDetailDemo {
+public class CreateInstructorDemo {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Instructor.class)
                 .addAnnotatedClass(InstructorDetail.class)
+                .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
 
         try {
+            Instructor tempInstructor = new Instructor("Susan", "Public", "susan@luv2code.com");
+            InstructorDetail tempInstructorDetail = new InstructorDetail("Youtube Luv2Code", "Video Games!");
+
+            tempInstructor.setInstructorDetail(tempInstructorDetail);
+
             session.beginTransaction();
 
-            int theId = 6;
-            InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, theId);
-
-            System.out.println("Instructor Detail: " + tempInstructorDetail.toString());
-
-            System.out.println("Associated Instructor: " + tempInstructorDetail.getInstructor().toString());
-
-            tempInstructorDetail.getInstructor().setInstructorDetail(null);
-
-            session.delete(tempInstructorDetail);
+            //Since CascadeType.All the associated object will be saved as well
+            session.save(tempInstructor);
 
             session.getTransaction().commit();
 
             System.out.println("Done!");
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
         } finally {
             session.close();
             factory.close();
