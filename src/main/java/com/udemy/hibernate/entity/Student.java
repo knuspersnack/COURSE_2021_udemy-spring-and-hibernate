@@ -3,8 +3,8 @@ package com.udemy.hibernate.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="instructor")
-public class Instructor {
+@Table(name="student")
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,20 +15,15 @@ public class Instructor {
     private String firstName;
 
     @Column(name="last_name")
-    private String lastName;
+    private  String lastName;
 
     @Column(name="email")
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    //The SQL script already creates the relationship, but here we tell hibernate about it
-    @JoinColumn(name="instructor_detail_id")
-    private InstructorDetail instructorDetail;
-
-    public Instructor() {
+    public Student() {
     }
 
-    public Instructor(String firstName, String lastName, String email) {
+    public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -66,11 +61,13 @@ public class Instructor {
         this.email = email;
     }
 
-    public InstructorDetail getInstructorDetail() {
-        return instructorDetail;
-    }
-
-    public void setInstructorDetail(InstructorDetail instructorDetail) {
-        this.instructorDetail = instructorDetail;
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
