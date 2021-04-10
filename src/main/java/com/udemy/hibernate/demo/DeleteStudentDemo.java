@@ -16,7 +16,7 @@ public class DeleteStudentDemo {
         Session session = factory.getCurrentSession();
 
         try {
-            int studentId = 1;
+            int studentId = 2;
             session.beginTransaction();
 
             System.out.println("Getting the student...");
