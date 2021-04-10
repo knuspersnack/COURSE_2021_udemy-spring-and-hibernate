@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
-public class CreateInstructorDemo {
+public class LazyDemo {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -20,19 +20,25 @@ public class CreateInstructorDemo {
         Session session = factory.getCurrentSession();
 
         try {
-            Instructor tempInstructor = new Instructor("Susan", "Public", "susan@luv2code.com");
-            InstructorDetail tempInstructorDetail = new InstructorDetail("Youtube Luv2Code", "Video Games!");
-
-            tempInstructor.setInstructorDetail(tempInstructorDetail);
 
             session.beginTransaction();
 
-            //Since CascadeType.All the associated object will be saved as well
-            session.save(tempInstructor);
+            int theId = 1;
+            Instructor tempInstructor = session.get(Instructor.class, theId);
+            System.out.println("--> Instructor: " + tempInstructor);
+
+            // Fetching the lazy data before the session is closed
+            System.out.println("--> Courses: " + tempInstructor.getCourseList());
 
             session.getTransaction().commit();
 
-            System.out.println("Done!");
+            session.close();
+            System.out.println("--> Closing the session\n");
+
+            // Since the data is already fetched, we can access it (otherwise we would get a nasty error)
+            System.out.println("--> Courses: " + tempInstructor.getCourseList() + "\n");
+
+            System.out.println("--> Done!");
 
         } finally {
             session.close();

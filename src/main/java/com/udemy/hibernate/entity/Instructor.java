@@ -28,8 +28,11 @@ public class Instructor {
     private InstructorDetail instructorDetail;
 
     // This is how the attribute is called within the course entity
-    @OneToMany(mappedBy = "instructor",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "instructor",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}
+    )
     private List<Course> courseList;
 
     public Instructor() {
