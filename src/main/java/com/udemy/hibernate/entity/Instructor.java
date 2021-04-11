@@ -27,9 +27,12 @@ public class Instructor {
     @JoinColumn(name="instructor_detail_id")
     private InstructorDetail instructorDetail;
 
-    // This is how the attribute is called within the course entity
-    @OneToMany(mappedBy = "instructor",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+
+    @OneToMany(
+            fetch=FetchType.LAZY,
+            mappedBy = "instructor", // This is how the attribute is called within the course entity
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}
+    )
     private List<Course> courseList;
 
     public Instructor() {
