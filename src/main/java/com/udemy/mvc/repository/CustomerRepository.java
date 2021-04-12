@@ -1,4 +1,4 @@
-package com.udemy.mvc.dao;
+package com.udemy.mvc.repository;
 
 import com.udemy.mvc.entity.Customer;
 

@@ -1,4 +1,4 @@
-package com.udemy.mvc.dao;
+package com.udemy.mvc.repository;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.udemy.mvc.service;
 
 import java.util.List;
 
-import com.udemy.mvc.dao.CustomerRepository;
+import com.udemy.mvc.repository.CustomerRepository;
 import com.udemy.mvc.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
