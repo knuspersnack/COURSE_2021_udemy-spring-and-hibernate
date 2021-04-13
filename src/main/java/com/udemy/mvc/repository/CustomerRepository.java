@@ -7,8 +7,11 @@ import java.util.List;
 
 public interface CustomerRepository {
 
-	public List<Customer> getCustomers();
+	List<Customer> getCustomers();
 
-	public void saveCustomer(Customer theCustomer);
-	
+	void saveCustomer(Customer theCustomer);
+
+    Customer getCustomer(int theId);
+
+	void deleteCustomer(int theId);
 }

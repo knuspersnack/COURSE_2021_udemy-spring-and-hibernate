@@ -42,9 +42,24 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		// save the customer ... finally LOL
-		currentSession.save(theCustomer);
+		// save/update the customer
+		currentSession.saveOrUpdate(theCustomer);
 		
+	}
+
+	@Override
+	public Customer getCustomer(int theId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		return currentSession.get(Customer.class, theId);
+	}
+
+	@Override
+	public void deleteCustomer(int theId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query theQuery = currentSession.createQuery("delete from Customer where id=:customerId");
+		theQuery.setParameter("customerId", theId);
+
+		theQuery.executeUpdate();
 	}
 
 }
