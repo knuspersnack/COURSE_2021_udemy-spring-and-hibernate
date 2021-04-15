@@ -33,7 +33,11 @@ public class AccountDAO {
         return true;
     }
 
-    public List<Account> findAccounts() {
+    public List<Account> findAccounts(boolean forceException) {
+        if (forceException) {
+            throw new RuntimeException("No soup for you!");
+        }
+
         List<Account> myAccounts = new ArrayList<>();
 
         Account temp1 = new Account("John", "Silver");
