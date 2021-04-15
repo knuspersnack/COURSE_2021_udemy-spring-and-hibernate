@@ -5,7 +5,7 @@ import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class PointcutContainer {
-    @Pointcut("execution(* com.udemy.aopdemo.dao.*.*( ..))")
+    @Pointcut("execution(* com.udemy.aopdemo.dao.*.add( ..))")
     public void matchesAllMethodsInDaoPackage(){}
 
     @Pointcut("execution(* com.udemy.aopdemo.dao.*.get*( ..))")
