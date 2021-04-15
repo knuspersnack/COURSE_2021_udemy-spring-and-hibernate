@@ -12,6 +12,9 @@ https://www.udemy.com/course/spring-hibernate-tutorial/
 7. Branch: Hibernate_Eager_Lazy = Section 26 (Hibernate Basics - Eager VS Lazy)
 8. Branch: Hibernate_ManyToMany = Section 27 (Hibernate Basics - n:m relationship)
 9. Branch: MVC_Hibernate_App = Section 28 - 33 (MVC + Hibernate WebApp)
+10. Branch: AOP_Setup = Section 35 (AOP Setup)
+11. Branch: AOP_Before_Advice = Section 35 + 36 (@Before advice type)
+12. Branch: AOP_Pointcut = Section 37 + 38 (Pointcut Declarations)  
 
 
 
