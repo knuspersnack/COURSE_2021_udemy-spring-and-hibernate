@@ -7,11 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(2)
-public class MyDemoLoggingAspect {
+@Order(1)
+public class MyApiAnalyticsAspect {
     @Before("com.udemy.aopdemo.aspect.PointcutContainer.matchesAllMethodsExceptGettersAndSetters()")
-    public void beforeAddAccoundAdvice() {
-        System.out.println("--> ADVICE: Executing @Before advice on addAccount() <--");
+    public void performApiAnalystics() {
+        System.out.println("--> ADVICE: Perform API anylytics <--");
     }
-
 }

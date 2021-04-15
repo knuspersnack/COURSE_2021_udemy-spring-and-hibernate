@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(2)
-public class MyDemoLoggingAspect {
+@Order(0)
+public class MyCloudLogAsyncAspect {
     @Before("com.udemy.aopdemo.aspect.PointcutContainer.matchesAllMethodsExceptGettersAndSetters()")
-    public void beforeAddAccoundAdvice() {
-        System.out.println("--> ADVICE: Executing @Before advice on addAccount() <--");
+    public void logToCloudAsynch() {
+        System.out.println("--> ADVICE: Logging to CLoud in async fashion <--");
     }
 
 }
