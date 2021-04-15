@@ -16,8 +16,12 @@ public class MainDemoApp {
         // call the business methods
         Account account = new Account();
         accountDAO.addAccount(account, true);
+        accountDAO.setName("Test");
+        accountDAO.setServiceCode("800");
+        accountDAO.getServiceCode();
         accountDAO.addSilly();
         accountDAO.doWork();
+
         membershipDAO.addAccount();
         membershipDAO.goToSleep();
 
