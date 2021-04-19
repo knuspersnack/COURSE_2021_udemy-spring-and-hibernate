@@ -16,6 +16,18 @@
     </p>
     <hr>
 
+    <!-- Add a link to point to /leaders for the managers -->
+    <p>
+        <a href="${pageContext.request.contextPath}/leaders">Leadership Meeting</a>
+    </p>
+
+    <!-- Add a link to point to /systems for the admins -->
+    <p>
+        <a href="${pageContext.request.contextPath}/systems">IT Admins Meeting</a>
+    </p>
+
+    <hr>
+
     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
         <input type="submit" value="Logout" />
     </form:form>
