@@ -2,7 +2,7 @@ package com.udemy.mvc.controller;
 
 import java.util.List;
 
-import com.udemy.mvc.entity.Customer;
+import com.udemy.mvc.model.Customer;
 import com.udemy.mvc.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

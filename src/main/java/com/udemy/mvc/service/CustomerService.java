@@ -1,6 +1,6 @@
 package com.udemy.mvc.service;
 
-import com.udemy.mvc.entity.Customer;
+import com.udemy.mvc.model.Customer;
 
 import java.util.List;
 
