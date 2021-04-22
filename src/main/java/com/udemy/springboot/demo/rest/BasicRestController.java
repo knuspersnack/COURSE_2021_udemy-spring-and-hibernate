@@ -11,7 +11,7 @@ public class BasicRestController {
 
     @GetMapping("/")
     public String sayHello() {
-        return "Hello World! Time on server is " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm"));
+        return "Hello World! Time on server is " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
     }
 
 }
