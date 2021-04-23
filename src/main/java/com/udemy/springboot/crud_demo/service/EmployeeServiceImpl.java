@@ -3,6 +3,7 @@ package com.udemy.springboot.crud_demo.service;
 import com.udemy.springboot.crud_demo.entity.Employee;
 import com.udemy.springboot.crud_demo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,8 +12,13 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    //it is important to use lowercase name for the bean after @Qualifier
+    public EmployeeServiceImpl(@Qualifier("employeeRepositoryJPAImpl") EmployeeRepository employeeRepository){
+        this.employeeRepository = employeeRepository;
+    }
 
     @Override
     @Transactional
