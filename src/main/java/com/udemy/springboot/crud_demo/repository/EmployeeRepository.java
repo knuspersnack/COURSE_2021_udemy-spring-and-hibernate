@@ -2,17 +2,8 @@ package com.udemy.springboot.crud_demo.repository;
 
 
 import com.udemy.springboot.crud_demo.entity.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface EmployeeRepository {
-
-    public List<Employee> findAll();
-
-    public Employee findById(int id);
-
-    public void save(Employee employee);
-
-    public void deleteById(int id);
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 }
