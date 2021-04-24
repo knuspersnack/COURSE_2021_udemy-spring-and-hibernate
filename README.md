@@ -37,10 +37,13 @@ https://www.udemy.com/course/spring-hibernate-tutorial/
 24. Branch: Spring_Boot_Setup = Section 70 (Spring Boot Setup)  
 24. Branch: Spring_Boot_Actuator = Section 71 (Spring Boot Actuator)  
 24. Branch: Spring_Boot_Custom_Application_Properties = Section 73 (Application Properties)  
-
-
-
-
+24. Branch: Spring_Boot_CRUD_Project_Hibernate_Nativ = Section 74 (Hibernate)  
+24. Branch: Spring_Boot_CRUD_Project_JPA= Section 75 (JPA)  
+24. Branch: Spring_Boot_CRUD_Project_Spring_Data_JPA = Section 76 (Spring Data JPA)  
+24. Branch: Spring_Boot_CRUD_Project_Spring_Data_REST = Section 77 (Spring Data Rest)  
+24. Branch: Spring_Boot_Thymeleaf_Setup = Section 78 (Thymeleaf General)  
+24. Branch: Spring_Boot_Thymeleaf_Table = Section 80 + 81 (Thymeleaf Table)  
+24. Branch: Spring_Boot_Thymeleaf_CRUD_Project = Section 73 (Real Project + Security)  
 
 ## Helpful Resources:
 https://www.baeldung.com/spring-with-maven
