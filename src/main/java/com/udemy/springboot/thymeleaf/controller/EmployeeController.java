@@ -1,38 +1,76 @@
 package com.udemy.springboot.thymeleaf.controller;
 
-import com.udemy.springboot.thymeleaf.model.Employee;
+import java.util.List;
+
+import com.udemy.springboot.thymeleaf.entity.Employee;
+import com.udemy.springboot.thymeleaf.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
 
-    private List<Employee> employeeList;
+    private EmployeeService employeeService;
 
-    @PostConstruct
-    private  void loadData() {
-        Employee emp1 = new Employee(1, "Leslie", "Andrews", "test@luv2Code.com");
-        Employee emp2 = new Employee(2, "Hans", "Müller", "test@luv2Code.com");
-        Employee emp3 = new Employee(3, "Hannah", "Stevens", "test@luv2Code.com");
-
-        employeeList = new ArrayList<>();
-
-        employeeList.add(emp1);
-        employeeList.add(emp2);
-        employeeList.add(emp3);
+    public EmployeeController(EmployeeService theEmployeeService) {
+        employeeService = theEmployeeService;
     }
 
     @GetMapping("/list")
-    public String listEmployees(Model model) {
-        model.addAttribute("employees", employeeList);
-        return "list-employees";
+    public String listEmployees(Model theModel) {
+
+        // get employees from db
+        List<Employee> theEmployees = employeeService.findAll();
+
+        // add to the spring model
+        theModel.addAttribute("employees", theEmployees);
+
+        return "employees/list-employees";
     }
 
+    @GetMapping("/showFormForAdd")
+    public String showForm(Model theModel) {
+
+        Employee employee = new Employee();
+
+        theModel.addAttribute("employee", employee);
+
+        return "employees/employee-form";
+    }
+
+    @GetMapping("showFormForUpdate")
+    public String showFormFOrUpdate(@RequestParam("employeeId") int id, Model model) {
+        Employee employee = employeeService.findById(id);
+
+        model.addAttribute("employee", employee);
+
+        return "employees/employee-form";
+    }
+
+    @PostMapping("/save")
+    public String save(@ModelAttribute("employee") Employee employee) {
+
+        employeeService.save(employee);
+
+        return "redirect:/employees/list";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("employeeId") int id) {
+
+        employeeService.deleteById(id);
+
+        return "redirect:/employees/list";
+    }
 }
+
+
+
+
+
+
+
+
